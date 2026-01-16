@@ -1,0 +1,16 @@
+diff '--color=auto' -arNu a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2024-03-03 02:11:53.952166254 +0100
++++ b/CMakeLists.txt	2024-03-03 02:11:16.832164723 +0100
+@@ -380,12 +380,6 @@
+           DESTINATION bin)
+ endif()
+ 
+-# On versions of CMake that support it, create an export file CMake
+-# users can include() to import our targets
+-if(PNG_EXPORT_RULE AND NOT SKIP_INSTALL_EXPORT AND NOT SKIP_INSTALL_ALL )
+-  install(EXPORT libpng DESTINATION lib/libpng FILE lib${PNG_LIB_NAME}.cmake)
+-endif()
+-
+ # what's with libpng-$VER%.txt and all the extra files?
+ 
+ 

@@ -1,0 +1,5 @@
+# See ApplyPatch.cmake
+if(NOT PATCH_FILE)
+	message(FATAL_ERROR "no PATCH_FILE passed to the script")
+endif()
+execute_process(COMMAND @PATCH_COMMAND@ -Np1 INPUT_FILE ${PATCH_FILE})

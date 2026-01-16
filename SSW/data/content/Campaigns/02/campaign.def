@@ -1,0 +1,1154 @@
+CAMPAIGN
+
+name:       "c02.name"
+desc:       "c02.desc"
+situation:  "c02.sitrep"
+orders:     "c02.orders"
+stardate:   17280000.0
+
+combatant: {
+   name:    "Terellian Alliance",
+   group:   { type: carrier_group,      id:    6 },
+   group:   { type: destroyer_squadron, id:   43 },
+   group:   { type: destroyer_squadron, id:   60 },
+   group:   { type: freight,            id: 3000 },
+}
+
+combatant: {
+   name:    "Dantari Separatists",
+   group:   { type: fleet,              id: 1    },
+   group:   { type: battalion,          id: 1    },
+   group:   { type: battalion,          id: 2    },
+   group:   { type: war_production,     id: 1    },
+   group:   { type: freight,            id: 3000 },
+}
+
+combatant: {
+   name:    "Marakan Hegemony",
+   group:   { type: fleet,              id: 4    },
+}
+
+combatant: {
+   name:    "Independent System of Solus",
+   group:   { type: infrastructure,     id: 2000 },
+   group:   { type: transport,          id: 2100 },
+   group:   { type: civilian,           id: 2200 },
+   group:   { type: freight,            id: 3000 },
+   group:   { type: civilian,           id: 5000 },
+}
+
+action: {
+   id:      0,
+   type:    event,
+   subtype: campaign_start,
+   team:    1,
+   rgn:     Solus,
+   text:    "c02.a000",
+   source:  News,
+   file:    "Actions/01-campaign-start.txt",
+   image:   "Actions/01-campaign-start.pcx"
+   scene:   "Scenes/01-News-Start.def"
+}
+
+action: {
+   id:         1,
+   type:       zone,
+   team:       1,
+   asset_type: carrier_group,
+   asset_id:   6,
+   region:     Trellis,
+   image:      "Actions/AA-archon-trellis.pcx"
+}
+
+action: {
+   id:         2,
+   type:       zone,
+   team:       1,
+   asset_type: destroyer_squadron,
+   asset_id:   60,
+   region:     Trellis,
+   image:      "Actions/AA-gerrond-trellis.pcx"
+}
+
+action: {
+   id:         50,
+   type:       zone,
+   team:       2,
+   asset_type: carrier_group,
+   asset_id:   5,
+   region:     Jalah,
+}
+
+action: {
+   id:         51,
+   type:       zone,
+   team:       2,
+   asset_type: destroyer_squadron,
+   asset_id:   5,
+   region:     Jalah,
+}
+
+action: {
+   id:         52,
+   type:       zone,
+   team:       2,
+   asset_type: destroyer_squadron,
+   asset_id:   6,
+   region:     Trellis,
+}
+
+action: {
+   id:         53,
+   type:       zone,
+   team:       2,
+   asset_type: destroyer_squadron,
+   asset_id:   7,
+   region:     Meridian,
+}
+
+action: {
+   id:         60
+   type:       event
+   subtype:    story
+   team:       1
+   rgn:        Loris
+   after:      "01/15:00:00"
+   text:       "c02.a060"
+   source:     Mail
+   file:       "Actions/m1-catching-up.txt"
+   image:      "Actions/m0-mail-icon.pcx"
+   scene:      "Scenes/M1-Catching-Up.def"
+}
+
+
+action: {
+   id:         110,
+   type:       intel,
+   subtype:    known,
+   team:       2,
+   rgn:        Trellis,
+   asset_type: minefield,
+   asset_id:   4,
+
+   req: { c1: "Dantari Separatists", group_type: minefield, group_id: 1, comp: LT, score: 10 },
+}
+
+action: {
+   id:         120,
+   type:       intel,
+   subtype:    known,
+   team:       2,
+   rgn:        Trellis,
+   asset_type: minefield,
+   asset_id:   5,
+
+   req: { c1: "Dantari Separatists", group_type: minefield, group_id: 2, comp: LT, score: 10 },
+}
+
+
+action: {
+   id:         130,
+   type:       event,
+   subtype:    story,
+   team:       1,
+   rgn:        Solus,
+   after:      "02/05:00:00",
+   text:       "c02.a130",
+   source:     News,
+   file:       "Actions/02-coup-failure.txt",
+   image:      "Actions/02-coup-failure.pcx",
+   scene:      "Scenes/02-Coup-Failure.def"
+}
+
+action: {
+   id:         140,
+   type:       event,
+   subtype:    attack,
+   team:       1,
+   rgn:        Trellis,
+   text:       "c02.a140",
+   file:       "Actions/03a-minefield-a.txt",
+   source:     TACNET,
+   after:      "02/09:00:00",
+   before:     "03/09:00:00",
+
+   req: { c1: "Dantari Separatists", group_type: minefield, group_id: 1, comp: GT, score: 10 },
+
+   target_type: minefield,
+   target_id:   1,
+   target_iff:  2,
+   target_kill: "Minefield A",
+   target_kill: "Minefield A",
+   target_kill: "Minefield A",
+   target_kill: "Minefield A",
+   target_kill: "Minefield A",
+   target_kill: "Minefield A",
+}
+
+action: {
+   id:         150,
+   type:       event,
+   subtype:    attack,
+   team:       1,
+   rgn:        Trellis,
+   text:       "c02.a150",
+   file:       "Actions/03a-minefield-b.txt",
+   source:     TACNET,
+   after:      "02/13:30:00",
+   before:     "03/13:30:00",
+
+   req: { c1: "Dantari Separatists", group_type: minefield, group_id: 2, comp: GT, score: 10 },
+
+   target_type: minefield,
+   target_id:   2,
+   target_iff:  2,
+   target_kill: "Minefield B",
+   target_kill: "Minefield B",
+   target_kill: "Minefield B",
+   target_kill: "Minefield B",
+   target_kill: "Minefield B",
+   target_kill: "Minefield B",
+}
+
+action: {
+   id:         160,
+   type:       event,
+   subtype:    attack,
+   team:       1,
+   rgn:        Trellis,
+   text:       "c02.a160",
+   file:       "Actions/03a-minefield-c.txt",
+   source:     TACNET,
+   after:      "02/19:20:00",
+   before:     "03/19:20:00",
+
+   req: { c1: "Dantari Separatists", group_type: minefield, group_id: 3, comp: GT, score: 10 },
+
+   target_type: minefield,
+   target_id:   3,
+   target_iff:  2,
+   target_kill: "Minefield C",
+   target_kill: "Minefield C",
+   target_kill: "Minefield C",
+   target_kill: "Minefield C",
+   target_kill: "Minefield C",
+   target_kill: "Minefield C",
+}
+
+action: {
+   id:         170,
+   type:       event,
+   subtype:    attack,
+   team:       1,
+   rgn:        Trellis,
+   text:       "c02.a170",
+   file:       "Actions/03a-minefield-d.txt",
+   source:     TACNET,
+   after:      "03/00:45:00",
+   before:     "04/00:45:00",
+
+   req: { c1: "Dantari Separatists", group_type: minefield, group_id: 4, comp: GT, score: 10 },
+
+   target_type: minefield,
+   target_id:   4,
+   target_iff:  2,
+   target_kill: "Minefield D",
+   target_kill: "Minefield D",
+   target_kill: "Minefield D",
+   target_kill: "Minefield D",
+   target_kill: "Minefield D",
+   target_kill: "Minefield D",
+}
+
+action: {
+   id:         180,
+   type:       event,
+   subtype:    attack,
+   team:       1,
+   rgn:        Trellis,
+   text:       "c02.a180",
+   file:       "Actions/03a-minefield-e.txt",
+   source:     TACNET,
+   after:      "03/08:30:00",
+   before:     "04/08:30:00",
+
+   req: { c1: "Dantari Separatists", group_type: minefield, group_id: 5, comp: GT, score: 10 },
+
+   target_type: minefield,
+   target_id:   5,
+   target_iff:  2,
+   target_kill: "Minefield E",
+   target_kill: "Minefield E",
+   target_kill: "Minefield E",
+   target_kill: "Minefield E",
+   target_kill: "Minefield E",
+   target_kill: "Minefield E",
+}
+
+action: {
+   id:         190
+   type:       event
+   subtype:    story
+   team:       1,
+   rgn:        Jarnell
+   after:      "03/18:00:00"
+   text:       "c02.a190"
+   source:     Mail
+   file:       "Actions/m2-new-digs.txt"
+   image:      "Actions/m0-mail-icon.pcx"
+   scene:      "Scenes/M2-New-Digs.def"
+}
+
+action: {
+   id:         200,
+   type:       event,
+   subtype:    story,
+   team:       1,
+   rgn:        Solus,
+   text:       "c02.a200",
+   source:     News,
+   file:       "Actions/03-blockade-broken.txt",
+   image:      "Actions/03-blockade-broken.pcx",
+   scene:      "Scenes/03-Blockade-Broken.def",
+
+   req: { c1: "Dantari Separatists", group_type: minefield, group_id: 1, comp: LT, score: 10 },
+   req: { c1: "Dantari Separatists", group_type: minefield, group_id: 2, comp: LT, score: 10 },
+   req: { c1: "Dantari Separatists", group_type: minefield, group_id: 3, comp: LT, score: 10 },
+   req: { c1: "Dantari Separatists", group_type: minefield, group_id: 4, comp: LT, score: 10 },
+   req: { c1: "Dantari Separatists", group_type: minefield, group_id: 5, comp: LT, score: 10 },
+}
+
+action: {
+   id:         210,
+   type:       sitrep,
+   team:       1,
+   text:       "c02.a210"
+   req: { action: 200, status: COMPLETE }
+}
+
+
+action: {
+   id:         230,
+   type:       intel,
+   subtype:    known,
+   team:       1,
+   rgn:        Trellis,
+   asset_type: freight,
+   asset_id:   3000,
+
+   req: { action: 200, status: COMPLETE }
+}
+
+action: {
+   id:         240,
+   type:       orders,
+   team:       1,
+   text:       "c02.a240"
+
+   req: { action: 200, status: COMPLETE }
+}
+
+action: {
+   id:         250,
+   type:       mission,
+   subtype:    escort_freight,
+   team:       1,
+   rgn:        Trellis,
+   asset_type: fighter_squadron,
+   asset_id:   36,
+   count:      4,
+
+   req: { action: 200, status: COMPLETE }
+}
+
+action: {
+   id:         255,
+   type:       mission,
+   subtype:    escort_freight,
+   team:       1,
+   rgn:        Trellis,
+   asset_type: destroyer_squadron,
+   asset_id:   43,
+   count:      2,
+
+   req: { action: 200, status: COMPLETE }
+}
+
+action: {
+   id:         260,
+   type:       event,
+   subtype:    story,
+   team:       1,
+   rgn:        Solus,
+   after:      "03/09:15:00",
+   text:       "c02.a260",
+   source:     SECURE,
+   file:       "Actions/04-harmony-risk.txt",
+   image:      "Actions/04-harmony-risk.pcx",
+   scene:      "Scenes/04-Harmony-Risk.def",
+}
+
+action: {
+   id:         270,
+   type:       zone,
+   team:       1,
+   after:      "03/19:00:00",
+   asset_type: carrier_group,
+   asset_id:   6,
+   region:     Solus,
+   image:      "Actions/AA-archon-solus.pcx"
+}
+
+action: {
+   id:         280,
+   type:       zone,
+   team:       1,
+   after:      "03/19:30:00",
+   asset_type: destroyer_squadron,
+   asset_id:   60,
+   region:     Solus,
+   image:      "Actions/AA-gerrond-solus.pcx"
+}
+
+action: {
+   id:         300,
+   type:       event,
+   subtype:    story,
+   team:       1,
+   rgn:        Solus,
+   after:      "04/04:00:00",
+   text:       "c02.a300",
+   source:     FORCOM,
+   file:       "Actions/06-renser-buildup.txt",
+   image:      "Actions/06-renser-buildup.pcx",
+   scene:      "Scenes/06-Renser-Buildup.def"
+}
+
+action: {
+   id:         305,
+   type:       sitrep,
+   team:       1,
+   after:      "04/04:00:00",
+   text:       "c02.a305",
+}
+
+// if player stumbles upon the base before expected:
+action: {
+   id:         310,
+   type:       event,
+   subtype:    story,
+   team:       1,
+   rgn:        Telmera,
+   before:     "04/08:20:00",
+   text:       "c02.a310",
+   source:     SECURE,
+   file:       "Actions/05-foothill-ridge.txt",
+   image:      "Actions/05-foothill-ridge.pcx",
+   scene:      "Scenes/05-Foothill-Ridge.def",
+
+   req: { c1: "Dantari Separatists", group_type: battalion, group_id: 2, comp: GT, intel: SECRET },
+}
+
+action: {
+   id:         315,
+   type:       intel,
+   subtype:    known,
+   team:       2,
+   rgn:        Telmera,
+   after:      "04/08:20:00",
+   asset_type: intercept_squadron,
+   asset_id:   3,
+}
+
+action: {
+   id:         320,
+   type:       intel,
+   subtype:    known,
+   team:       2,
+   rgn:        Telmera,
+   after:      "04/08:30:00",
+   asset_type: attack_squadron,
+   asset_id:   4,
+}
+
+action: {
+   id:         325,
+   type:       intel,
+   subtype:    known,
+   team:       2,
+   rgn:        Telmera,
+   after:      "04/08:30:00",
+   asset_type: battery,
+   asset_id:   1,
+}
+
+action: {
+   id:         330,
+   type:       event,
+   subtype:    story,
+   team:       1,
+   rgn:        Telmera,
+   after:      "04/08:30:00",
+   text:       "c02.a330",
+   source:     SECURE,
+   file:       "Actions/05-foothill-ridge.txt",
+   image:      "Actions/05-foothill-ridge.pcx",
+   scene:      "Scenes/05-Foothill-Ridge.def",
+
+   req: { action: 310, status: COMPLETE, not: true }
+}
+
+action: {
+   id:         350,
+   type:       event,
+   subtype:    story,
+   team:       1,
+   rgn:        Meridian,
+   after:      "04/15:00:00",
+   text:       "c02.a350",
+   source:     News,
+   file:       "Actions/07-research-lab.txt",
+   image:      "Actions/07-research-lab.pcx",
+   scene:      "Scenes/07-Research-Lab.def"
+}
+
+action: {
+   id:         370,
+   type:       zone,
+   team:       1,
+   after:      "04/16:30:00",
+   asset_type: destroyer_squadron,
+   asset_id:   60,
+   region:     Meridian,
+   image:      "Actions/AA-gerrond-meridian.pcx"
+}
+
+action: {
+   id:         375,
+   type:       event,
+   subtype:    story,
+   team:       1,
+   rgn:        Solus,
+   after:      "04/20:00:00",
+   text:       "c02.a375",
+   source:     News,
+   file:       "Actions/08-renser-accusation.txt",
+   image:      "Actions/08-renser-accusation.pcx",
+   scene:      "Scenes/08-Renser-Accusation.def"
+}
+
+action: {
+   id:         410,
+   type:       event,
+   subtype:    story,
+   team:       1,
+   rgn:        Solus,
+   after:      "05/12:00:00",
+   text:       "c02.a410",
+   source:     News,
+   file:       "Actions/09-senate-resolution.txt",
+   image:      "Actions/09-senate-resolution.pcx",
+   scene:      "Scenes/09-Senate-Resolution.def"
+}
+
+// RENSER TASK FORCE ARRIVES IN SOLUS (JALAH SECTOR)
+
+action: {
+   id:         420,
+   type:       intel,
+   subtype:    known,
+   team:       2,
+   rgn:        Jalah,
+   after:      "06/21:15:00",
+   asset_type: destroyer_squadron,
+   asset_id:   25,
+}
+
+action: {
+   id:         421,
+   type:       intel,
+   subtype:    known,
+   team:       2,
+   rgn:        Jalah,
+   after:      "06/22:45:00",
+   asset_type: destroyer_squadron,
+   asset_id:   26,
+}
+
+action: {
+   id:         422,
+   type:       intel,
+   subtype:    known,
+   team:       2,
+   rgn:        Jalah,
+   after:      "06/23:30:00",
+   asset_type: carrier_group,
+   asset_id:   4,
+}
+
+// KEEP RENSER TASK FORCE IN JALAH SECTOR
+
+action: {
+   id:         425,
+   type:       zone,
+   team:       2,
+   rgn:        Jalah,
+   after:      "06/21:15:00",
+   asset_type: destroyer_squadron,
+   asset_id:   25,
+}
+
+action: {
+   id:         426,
+   type:       zone,
+   team:       2,
+   rgn:        Jalah,
+   after:      "06/22:45:00",
+   asset_type: destroyer_squadron,
+   asset_id:   26,
+}
+
+action: {
+   id:         427,
+   type:       zone,
+   team:       2,
+   rgn:        Jalah,
+   after:      "06/23:30:00",
+   asset_type: carrier_group,
+   asset_id:   4,
+}
+
+action: {
+   id:         440,
+   type:       event,
+   subtype:    story,
+   team:       1,
+   rgn:        Jalah,
+   after:      "06/23:45:00",
+   text:       "c02.a440",
+   source:     FORCOM,
+   file:       "Actions/10-renser-arrival.txt",
+   image:      "Actions/10-renser-arrival.pcx",
+}
+
+action: {
+   id:         450,
+   type:       sitrep,
+   team:       1,
+   after:      "06/23:45:00",
+   text:       "c02.a450"
+}
+
+action: {
+   id:         455,
+   type:       orders,
+   team:       1,
+   after:      "06/23:45:00",
+   text:       "c02.a455"
+}
+
+// DANTARI FORCES FALL BACK TO JALAH TO REGROUP WITH RENSER TASK FORCE
+
+action: {
+   id:         500,
+   type:       zone,
+   team:       2,
+   after:      "07/18:00:00",
+   asset_type: carrier_group,
+   asset_id:   5,
+   region:     Jalah,
+}
+
+action: {
+   id:         501,
+   type:       zone,
+   team:       2,
+   after:      "07/20:00:00",
+   asset_type: destroyer_squadron,
+   asset_id:   5,
+   region:     Jalah,
+}
+
+action: {
+   id:         502,
+   type:       zone,
+   team:       2,
+   after:      "07/21:00:00",
+   asset_type: destroyer_squadron,
+   asset_id:   6,
+   region:     Jalah,
+}
+
+action: {
+   id:         503,
+   type:       zone,
+   team:       2,
+   after:      "07/22:00:00",
+   asset_type: destroyer_squadron,
+   asset_id:   7,
+   region:     Jalah,
+}
+
+action: {
+   id:         510,
+   type:       event,
+   subtype:    story,
+   team:       1,
+   rgn:        Jalah,
+   after:      "07/22:15:00",
+   text:       "c02.a510",
+   source:     FORCOM,
+   file:       "Actions/11-dantari-pullback.txt",
+   image:      "Actions/11-dantari-pullback.pcx",
+   scene:      "Scenes/11-Dantari-Pullback.def"
+}
+
+action: {
+   id:         515,
+   type:       sitrep,
+   team:       1,
+   after:      "07/22:15:00",
+   text:       "c02.a515"
+}
+
+// ALLIANCE FORCES PURSUE THEM INTO JALAH
+
+action: {
+   id:         520,
+   type:       zone,
+   team:       1,
+   after:      "08/00:00:00",
+   asset_type: destroyer_squadron,
+   asset_id:   60,
+   region:     Jalah,
+   image:      "Actions/AA-gerrond-jalah.pcx"
+}
+
+action: {
+   id:         521,
+   type:       zone,
+   team:       1,
+   after:      "08/01:00:00",
+   asset_type: carrier_group,
+   asset_id:   6,
+   region:     Jalah,
+   image:      "Actions/AA-archon-jalah.pcx"
+}
+
+action: {
+   id:         530,
+   type:       intel,
+   subtype:    known,
+   team:       1,
+   after:      "08/22:00:00",
+   asset_type: destroyer_squadron,
+   asset_id:   43,
+   region:     Jalah,
+}
+
+action: {
+   id:         535,
+   type:       zone,
+   team:       1,
+   after:      "08/22:00:00",
+   asset_type: destroyer_squadron,
+   asset_id:   43,
+   region:     Jalah,
+   image:      "Actions/AA-shadow-jalah.pcx",
+
+   req: { action: 735, status: COMPLETE, not: true }
+}
+
+// DON'T PROLONG THE SUFFERING INDEFINITELY
+
+action: {
+   id:         550,
+   type:       event,
+   subtype:    attack,
+   team:       1,
+   rgn:        Jalah,
+   text:       "c02.a550",
+   file:       "Actions/11a-wolf.txt",
+   source:     TACNET,
+   after:      "10/13:30:00",
+   before:     "11/13:30:00",
+
+   req: { c1: "Dantari Separatists", group_type: destroyer_squadron, group_id: 5, comp: GT, score: 100 },
+   req: { action: 600, status: COMPLETE, not: true },
+
+   target_type: destroyer_squadron,
+   target_id:   5,
+   target_iff:  2,
+   target_kill: "Wolf",
+   target_kill: "Halas",
+   target_kill: "Baikal",
+   target_kill: "Kyren",
+}
+
+action: {
+   id:         555,
+   type:       event,
+   subtype:    attack,
+   team:       1,
+   rgn:        Jalah,
+   text:       "c02.a555",
+   file:       "Actions/11a-kitts.txt",
+   source:     TACNET,
+   after:      "10/20:30:00",
+   before:     "11/20:30:00",
+
+   req: { c1: "Dantari Separatists", group_type: destroyer_squadron, group_id: 6, comp: GT, score: 200 },
+   req: { action: 600, status: COMPLETE, not: true },
+
+   target_type: destroyer_squadron,
+   target_id:   6,
+   target_iff:  2,
+   target_kill: "Kitts",
+   target_kill: "Tomal",
+   target_kill: "Loval",
+   target_kill: "Udel",
+}
+
+action: {
+   id:         560,
+   type:       event,
+   subtype:    attack,
+   team:       1,
+   rgn:        Jalah,
+   text:       "c02.a560",
+   file:       "Actions/11a-kendra.txt",
+   source:     TACNET,
+   after:      "11/10:30:00",
+   before:     "12/10:30:00",
+
+   req: { c1: "Dantari Separatists", group_type: destroyer_squadron, group_id: 7, comp: GT, score: 300 },
+   req: { action: 600, status: COMPLETE, not: true },
+
+   target_type: destroyer_squadron,
+   target_id:   7,
+   target_iff:  2,
+   target_kill: "Kendra",
+   target_kill: "Sayal",
+   target_kill: "Baionne",
+   target_kill: "Pelorat",
+}
+
+action: {
+   id:         565,
+   type:       event,
+   subtype:    attack,
+   team:       1,
+   rgn:        Jalah,
+   text:       "c02.a565",
+   file:       "Actions/11a-goliath.txt",
+   source:     TACNET,
+   after:      "12/10:20:00",
+   before:     "13/10:20:00",
+
+   req: { c1: "Dantari Separatists", group_type: carrier_group, group_id: 5, comp: GT, score: 500 },
+   req: { action: 600, status: COMPLETE, not: true },
+
+   target_type: carrier_group,
+   target_id:   5,
+   target_iff:  2,
+   target_kill: "Goliath",
+   target_kill: "Lanner",
+   target_kill: "Connel",
+   target_kill: "Ganat",
+}
+
+// AFTER JALAH FALLS, TASK FORCE RETREATS TO RENSER
+
+action: {
+   id:         600,
+   type:       event,
+   subtype:    story,
+   team:       1,
+   rgn:        Solus,
+   text:       "c02.a600",
+   source:     News,
+   file:       "Actions/12-cease-fire.txt",
+   image:      "Actions/12-cease-fire.pcx",
+
+   req: { c1: "Dantari Separatists", group_type: carrier_group,      group_id: 5, comp: LT, score: 500 },
+   req: { c1: "Dantari Separatists", group_type: destroyer_squadron, group_id: 5, comp: LT, score: 100 },
+   req: { c1: "Dantari Separatists", group_type: destroyer_squadron, group_id: 6, comp: LT, score: 200 },
+   req: { c1: "Dantari Separatists", group_type: destroyer_squadron, group_id: 7, comp: LT, score: 300 },
+}
+
+action: {
+   id:         620,
+   type:       intel,
+   subtype:    known,
+   team:       2,
+   rgn:        Khaital,
+   asset_type: destroyer_squadron,
+   asset_id:   25,
+
+   req: { action: 600, status: COMPLETE }
+}
+
+action: {
+   id:         621,
+   type:       intel,
+   subtype:    known,
+   team:       2,
+   rgn:        Khaital,
+   asset_type: destroyer_squadron,
+   asset_id:   26,
+
+   req: { action: 600, status: COMPLETE }
+}
+
+action: {
+   id:         622,
+   type:       intel,
+   subtype:    known,
+   team:       2,
+   rgn:        Lornas,
+   asset_type: carrier_group,
+   asset_id:   4,
+
+   req: { action: 600, status: COMPLETE }
+}
+
+// KEEP RENSER TASK FORCE IN KHAITAL SECTOR
+
+action: {
+   id:         630,
+   type:       zone,
+   team:       2,
+   rgn:        Khaital,
+   asset_type: destroyer_squadron,
+   asset_id:   25,
+
+   req: { action: 620, status: COMPLETE }
+}
+
+action: {
+   id:         640,
+   type:       zone,
+   team:       2,
+   rgn:        Khaital,
+   asset_type: destroyer_squadron,
+   asset_id:   26,
+
+   req: { action: 621, status: COMPLETE }
+}
+
+action: {
+   id:         650,
+   type:       zone,
+   team:       2,
+   rgn:        Lornas,
+   asset_type: carrier_group,
+   asset_id:   4,
+
+   req: { action: 622, status: COMPLETE }
+}
+
+// ALLIANCE FORCES ARRIVE IN KHAITAL
+
+action: {
+   id:         700,
+   type:       event,
+   subtype:    story,
+   team:       1,
+   rgn:        Solus,
+   text:       "c02.a700",
+   source:     News,
+   file:       "Actions/13-renser-invasion.txt",
+   image:      "Actions/13-renser-invasion.pcx",
+   scene:      "Scenes/13-Renser-Invasion.def",
+   delay:      19800, // five and a half hours after 600
+
+   req: { action: 600, status: COMPLETE }
+}
+
+action: {
+   id:         701,
+   type:       event,
+   subtype:    story
+   team:       1
+   rgn:        Jarnell
+   text:       "c02.a701"
+   source:     Mail
+   file:       "Actions/m3-why-renser.txt"
+   image:      "Actions/m0-mail-icon.pcx"
+   scene:      "Scenes/M3-Why-Renser.def"
+   delay:      21600 // six hours after 700
+
+   req: { action: 700, status: COMPLETE }
+}
+
+action: {
+   id:         710,
+   type:       sitrep,
+   team:       1,
+   text:       "c02.a710",
+
+   req: { action: 700, status: COMPLETE }
+}
+
+action: {
+   id:         711,
+   type:       orders,
+   team:       1,
+   text:       "c02.a711",
+
+   req: { action: 700, status: COMPLETE }
+}
+
+action: {
+   id:         720,
+   type:       zone,
+   team:       1,
+   asset_type: destroyer_squadron,
+   asset_id:   60,
+   region:     Khaital,
+   image:      "Actions/AA-gerrond-khaital.pcx",
+
+   req: { action: 700, status: COMPLETE }
+}
+
+action: {
+   id:         725,
+   type:       zone,
+   team:       1,
+   asset_type: carrier_group,
+   asset_id:   6,
+   region:     Khaital,
+   image:      "Actions/AA-archon-khaital.pcx",
+
+   req: { action: 700, status: COMPLETE }
+}
+
+action: {
+   id:         735,
+   type:       zone,
+   team:       1,
+   asset_type: destroyer_squadron,
+   asset_id:   43,
+   region:     Khaital,
+   image:      "Actions/AA-shadow-khaital.pcx",
+
+   req: { action: 530, status: COMPLETE },
+   req: { action: 700, status: COMPLETE }
+}
+
+// ALLIANCE FORCES PURSUE FLEET INTO LORNAS
+
+action: {
+   id:         660,
+   type:       zone,
+   team:       2,
+   asset_type: destroyer_squadron,
+   asset_id:   25,
+   delay:      90e3,
+
+   req: { action: 620, status: COMPLETE }
+}
+
+action: {
+   id:         670,
+   type:       zone,
+   team:       2,
+   asset_type: destroyer_squadron,
+   asset_id:   26,
+   delay:      90e3,
+
+   req: { action: 621, status: COMPLETE }
+}
+
+action: {
+   id:         680,
+   type:       zone,
+   team:       2,
+   asset_type: carrier_group,
+   asset_id:   4,
+   delay:      90e3,
+
+   req: { action: 622, status: COMPLETE }
+}
+
+action: {
+   id:         721,
+   type:       zone,
+   team:       1,
+   asset_type: destroyer_squadron,
+   asset_id:   43,
+   delay:      36000,
+
+   req: { action: 660, status: COMPLETE },
+   req: { action: 720, status: COMPLETE }
+}
+
+action: {
+   id:         726,
+   type:       zone,
+   team:       1,
+   asset_type: carrier_group,
+   asset_id:   6,
+   delay:      36000,
+
+   req: { action: 670, status: COMPLETE },
+   req: { action: 725, status: COMPLETE }
+}
+
+action: {
+   id:         736,
+   type:       zone,
+   team:       1,
+   asset_type: destroyer_squadron,
+   asset_id:   60,
+   delay:      36000,
+
+   req: { action: 680, status: COMPLETE },
+   req: { action: 735, status: COMPLETE }
+}
+
+// THE BITTER END
+
+action: {
+   id:      997
+   type:    event
+   subtype: campaign_fail
+   team:    1
+   rgn:     Solus
+   text:    "c02.defeat"
+   file:    "Actions/def1.txt"
+   image:   "Actions/def1"
+   scene:   "Scenes/Defeat1.def"
+
+   req: { c1: "Terellian Alliance", group_type: carrier_group, group_id: 6, comp: LT, score: 3000 },
+   req: { action: 600, status: COMPLETE, not: true },
+}
+
+action: {
+   id:      998
+   type:    event
+   subtype: campaign_fail
+   team:    1
+   rgn:     Solus
+   text:    "c02.defeat"
+   file:    "Actions/def2.txt"
+   image:   "Actions/def2"
+   scene:   "Scenes/Defeat2.def"
+
+   req: { c1: "Terellian Alliance", group_type: carrier_group, group_id: 6, comp: LT, score: 3000 }
+   req: { action: 600, status: COMPLETE }
+}
+
+action: {
+   id:      999
+   type:    event
+   subtype: campaign_end // successful ending
+   team:    1
+   rgn:     Solus
+   text:    "c02.victory"
+   file:    "Actions/campaign_end.txt"
+   image:   "Actions/victory"
+   scene:   "Scenes/Victory.def"
+
+   req: { c1: "Marakan Hegemony", group_type: fleet, group_id: 4, comp: LT, score: 4000 }
+}

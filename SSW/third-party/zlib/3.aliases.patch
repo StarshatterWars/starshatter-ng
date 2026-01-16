@@ -1,0 +1,12 @@
+diff '--color=auto' -arNu a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2024-03-03 01:57:46.865464794 +0100
++++ b/CMakeLists.txt	2024-03-03 01:58:11.902132479 +0100
+@@ -175,6 +175,8 @@
+ target_include_directories(zlibstatic PUBLIC ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
+ set_target_properties(zlib PROPERTIES DEFINE_SYMBOL ZLIB_DLL)
+ set_target_properties(zlib PROPERTIES SOVERSION 1)
++add_library(Zlib::zlib ALIAS zlib)
++add_library(Zlib::zlibstatic ALIAS zlibstatic)
+ 
+ if(NOT CYGWIN)
+     # This property causes shared libraries on Linux to have the full version

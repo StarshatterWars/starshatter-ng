@@ -1,0 +1,30 @@
+diff '--color=auto' -ru a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2024-03-09 23:00:40.101308564 +0100
++++ b/CMakeLists.txt	2024-03-09 22:59:36.067973296 +0100
+@@ -84,7 +84,7 @@
+ 	find_package(Git)
+ endif()
+ 
+-set(INFOWARE_PCI_DATA_DIR infoware_generated CACHE PATH "Output directory for the PCI ids generator")
++set(INFOWARE_PCI_DATA_DIR "${CMAKE_CURRENT_BINARY_DIR}/infoware_generated" CACHE PATH "Output directory for the PCI ids generator")
+ set(INFOWARE_PCI_DATA_HPP pci_data.hpp)
+ set(INFOWARE_PCI_DATA_GEN "${INFOWARE_PCI_DATA_DIR}/${INFOWARE_PCI_DATA_HPP}")
+ set(infoware_pci_ids_error "\
+@@ -132,13 +132,13 @@
+ else()
+ 	include(ExternalProject)
+ 	ExternalProject_Add(infoware_generate_pcis
+-	                    SOURCE_DIR ${CMAKE_SOURCE_DIR}
+-	                    PREFIX ${CMAKE_BINARY_DIR}/pci_generator
+-	                    BINARY_DIR ${CMAKE_BINARY_DIR}/pci_generator
++	                    SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}
++	                    PREFIX ${CMAKE_CURRENT_BINARY_DIR}/pci_generator
++	                    BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/pci_generator
+ 	                    BUILD_COMMAND ${CMAKE_COMMAND} --build <BINARY_DIR> --target infoware_generate_pcis
+ 	                    INSTALL_COMMAND ""
+ 	                    BUILD_ALWAYS ON
+-	                    CMAKE_ARGS -DINFOWARE_PCI_DATA_DIR:PATH=${CMAKE_BINARY_DIR}/${INFOWARE_PCI_DATA_DIR})
++	                    CMAKE_ARGS -DINFOWARE_PCI_DATA_DIR:PATH=${INFOWARE_PCI_DATA_DIR})
+ endif()
+ add_dependencies(infoware infoware_generate_pcis)
+ 

@@ -1,0 +1,18 @@
+CAMPAIGN
+
+name:       "c01.name"
+desc:       "c01.desc"
+situation:  "c01.sitrep"
+orders:     "c01.orders"
+stardate:   1084144000.0
+scripted:   true
+
+action: {
+   id:      0,
+   type:    event,
+   subtype: campaign_start,
+   team:    1,
+   rgn:     Janus,
+   source:  News,
+   scene:   "Scenes/Intro.def"
+}

@@ -1,0 +1,21 @@
+# Generates and attaches new emulator wrapper for a TARGET for use with tests and custom target jobs.
+
+set(GENERATE_EMULATOR_TEMPLATE "${CMAKE_CURRENT_LIST_DIR}/wine.sh.in")
+if(CMAKE_CROSSCOMPILING)
+	function(generate_emulator TARGET)
+		cmake_parse_arguments(PARSE_ARGV 1 GENERATE_EMULATOR "" "" "LIBS")
+		set(WINE_PREFIX "$ENV{HOME}/.wine-${TOOLCHAIN_PREFIX}")
+		set(WINE_PATH "${CMAKE_FIND_ROOT_PATH}/bin")
+		foreach(LIB IN ITEMS ${GENERATE_EMULATOR_LIBS})
+			get_target_property(DIR ${LIB} BINARY_DIR)
+			list(PREPEND WINE_PATH "${DIR}")
+		endforeach()
+		set(EMULATOR "${CMAKE_CURRENT_BINARY_DIR}/wine")
+		configure_file("${GENERATE_EMULATOR_TEMPLATE}" "${EMULATOR}" @ONLY)
+		set_target_properties(${TARGET} PROPERTIES CROSSCOMPILING_EMULATOR "${EMULATOR}")
+	endfunction()
+else()
+	function(generate_emulator TARGET)
+		# no-op
+	endfunction()
+endif()

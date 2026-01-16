@@ -1,0 +1,263 @@
+MISSION
+
+name:    "c01.t04.name"
+type:    "Training"
+system:  "Janus"
+region:  "Janek Station"
+
+objective:  "c01.t04.obj"
+sitrep:     "c01.t04.sitrep"
+
+start:   "02/05:35:00"
+
+degrees: true
+
+element: {
+   name:       "Janek Station",
+   design:     Airbase1,
+   loc:        (25e3, 0, 0),
+   head:       -90,
+   iff:        1,
+   command_ai: 0,
+}
+
+element: {
+   name:    Stallions,
+   design:  Stormhawk,
+   count:   20,
+   maint_count: 5,
+   dead_count: 5,
+   carrier: "Janek Station",
+   iff:     1,
+   loadout: { ship: -1, name: "ACM Medium Range" },
+}
+
+element: {
+   name:    Alpha,
+   design:  Stormhawk,
+   squadron: Stallions,
+   player:  1,
+   alert:   true,
+   loc:     (15e3, -5e3, 5e3),
+   count:   2,
+   iff:     1,
+   head:    -90,
+
+   loadout: { ship: -1, name: "Ground Strike" },
+
+   mission: strike,
+   objective: { cmd: strike, tgt: "Cooling Tower" },
+   navpt:   { cmd: vector, loc: (   0, -40e3, 5e3), speed: 500, formation: 0 },
+   navpt:   { cmd: strike, loc: (30e3, -15e3, 7e3), speed: 500, formation: 3 },
+   navpt:   { cmd: rtb,    loc: (50e3,     0, 5e3), speed: 400 },
+}
+
+
+element: {
+   name:      "Building",
+   design:    "Bldg00",
+   mission:   "Misc",
+   intel:     "Located",
+   count:     1,
+   iff:       1,
+   playable:  false,
+   region:    "Janek Station",
+   loc:       (-19e3, 28e3, 0),
+   head:      -13
+}
+
+element: {
+   name:      "Building",
+   design:    "Bldg00",
+   mission:   "Misc",
+   intel:     "Located",
+   count:     1,
+   iff:       1,
+   playable:  false,
+   region:    "Janek Station",
+   loc:       (-21e3, 29e3, 0),
+   head:      -13
+}
+
+element: {
+   name:      "Office Block",
+   design:    "Bldg01",
+   mission:   "Misc",
+   intel:     "Located",
+   count:     1,
+   iff:       1,
+   playable:  false,
+   region:    "Janek Station",
+   loc:       (-16e3, 32e3, 0),
+   head:      -13
+}
+
+element: {
+   name:      "Dome",
+   design:    "Tank00",
+   mission:   "Misc",
+   intel:     "Located",
+   count:     1,
+   iff:       1,
+   playable:  false,
+   region:    "Janek Station",
+   loc:       (-19e3, 31e3, 0),
+   head:      -13
+}
+
+element: {
+   name:      "Office Block",
+   design:    "Bldg01",
+   mission:   "Misc",
+   intel:     "Located",
+   count:     1,
+   iff:       1,
+   playable:  false,
+   region:    "Janek Station",
+   loc:       (-18e3, 30e3, 0),
+   head:      -13
+}
+
+element: {
+   name:      "Building",
+   design:    "Fact03",
+   mission:   "Misc",
+   intel:     "Located",
+   count:     1,
+   iff:       1,
+   playable:  false,
+   region:    "Janek Station",
+   loc:       (-17e3, 29e3, 0),
+   head:      -13
+}
+
+element: {
+   name:      "Cooling Tower",
+   design:    "Cool00",
+   mission:   "Misc",
+   intel:     "Located",
+   count:     4,
+   iff:       2,
+   playable:  false,
+   region:    "Janek Station",
+   loc:       (70000, -10000, 0),
+
+}
+
+
+event: {
+   id:              101,
+   event:           Message,
+   trigger:         Destroyed,
+   trigger_ship:    "Cooling Tower 1",
+}
+
+event: {
+   id:              102,
+   event:           Message,
+   trigger:         Destroyed,
+   trigger_ship:    "Cooling Tower 2",
+}
+
+event: {
+   id:              103,
+   event:           Message,
+   trigger:         Destroyed,
+   trigger_ship:    "Cooling Tower 3",
+}
+
+event: {
+   id:              104,
+   event:           Message,
+   trigger:         Destroyed,
+   trigger_ship:    "Cooling Tower 4",
+}
+
+
+// VOICE-OVER
+
+
+event: { id: 200, event: Message, time:   2, sound: "Vox/Train/Train-04-01.ogg", message: "c01.t03.e200" }
+event: { id: 210, event: Message, time:  20, sound: "Vox/Train/Train-04-02.ogg", message: "c01.t03.e210" }
+event: { id: 220, event: Message, time:  40, sound: "Vox/Train/Train-04-03.ogg", message: "c01.t03.e220" }
+event: { id: 230, event: Message, time:  60, sound: "Vox/Train/Train-04-04.ogg", message: "c01.t03.e230" }
+
+/**
+ ** THIS MESSAGE IS NONSENSE!
+ **
+event: {
+    id:             240,
+    event:          Message,
+    message:        "c01.t04.e240"
+    sound:          "Vox/Train/Train-04-05.ogg",
+    trigger:        Navpoint,
+    trigger_param:  2,
+    trigger_ship:   Alpha
+}
+ **
+ **/
+
+event: {
+    id:             250,
+    event:          Message,
+    sound:          "Vox/Train/Train-04-06.ogg",
+    message:        "c01.t04.e250",
+    trigger:        Navpoint,
+    trigger_param:  2,
+    trigger_ship:   Alpha
+    delay:          5
+}
+
+event: {
+    id:             260,
+    event:          Message,
+    sound:          "Vox/Train/Train-04-07.ogg",
+    message:        "c01.t04.e260",
+    trigger:        Event,
+    trigger_param:  250,
+    delay:          15
+}
+
+event: { 
+    id:             270,
+    event:          Message,
+    sound:          "Vox/Train/Train-04-08.ogg",
+    message:        "c01.t04.e270",
+    trigger:        Event,
+    trigger_param:  260,
+    delay:          12
+}
+
+event: { 
+    id:             300,
+    event:          Message,
+    sound:          "Vox/Train/Train-04-09.ogg",
+    message:        "c01.t04.e300",
+    trigger:        Event,
+    trigger_param:  270,
+    delay:          12
+}
+
+
+event: {
+    id:             310,
+    event:          Message,
+    sound:          "Vox/Train/Train-04-10.ogg",
+    message:        "c01.t04.e310",
+    trigger:        "Event (ALL)",
+    trigger_param:   (101, 102, 103, 104), 
+    delay:           1
+}
+
+event: {
+    id:             311,
+    event:          Message,
+    sound:          "Vox/Train/Train-04-11.ogg",
+    message:        "c01.t04.e311",
+    trigger:        Event,
+    trigger_param:  310,
+    delay:          20
+}
+
+
+/***/

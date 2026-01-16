@@ -1,0 +1,8 @@
+MOD_INFO
+name:       "Internationalized Content"
+version:    100
+distribute: true
+
+logo:       "Alliance.pcx"
+desc:       "Internationalized content bundle (US/English) for Starshatter: The Gathering Storm"
+copyright:  "Copyright (c) 2007 Destroyer Studios LLC.\nAll rights reserved."

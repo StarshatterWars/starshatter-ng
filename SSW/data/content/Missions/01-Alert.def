@@ -1,0 +1,151 @@
+MISSION
+
+name:    "msn.s01.name"
+type:    PATROL
+system:  Ostara
+region:  Aram
+
+start:      "00/08:00:00"
+degrees:    true
+
+sitrep:     "msn.s01.sitrep"
+
+objective:  "msn.s01.obj"
+
+ship: {
+   name:       Archon,
+   design:     Orion,
+   loc:        (0, 0, 0),
+   count:      1,
+   iff:        1,
+   command_ai: 0,
+}
+
+ship: {
+   name:       Gerson,
+   design:     Asher,
+   loc:        (-20e3, 7e3, 300),
+   count:      1,
+   iff:        1,
+   command_ai: 0,
+   commander:  Archon,
+}
+
+ship: {
+   name:       Simmons,
+   design:     Asher,
+   loc:        (16e3, -2e3, 100),
+   count:      1,
+   iff:        1,
+   command_ai: 0,
+   commander:  Archon,
+}
+
+element: {
+   name:    Avengers,
+   design:  Falcon,
+   count:   24,
+   maint_count: 4,
+   dead_count: 4,
+   carrier: Archon,
+   iff:     1,
+}
+
+element: {
+   name:    Delta,
+   design:  Falcon,
+   squadron: Avengers,
+   loc:     (1e3, 2e3, 0),
+   mission: patrol,
+   player:  1,
+   alert:   true,
+   count:   2,
+   iff:     1,
+   loadout: { ship: -1, name: "ACM Medium Range" },
+
+   navpt:   { cmd: vector, loc: (  5e3, -10e3, 0), speed: 500 },
+   navpt:   { cmd: patrol, loc: ( 90e3,-130e3, 0), speed: 500 },
+   navpt:   { cmd: patrol, loc: (150e3, -60e3, 0), speed: 500 },
+   navpt:   { cmd: patrol, loc: (120e3,     0, 0), speed: 500 },
+   navpt:   { cmd: patrol, loc: ( 10e3,  30e3, 0), speed: 500 },
+}
+
+optional: {
+    min: 1,
+    max: 3,
+
+    element: {
+       name:    Nagal,
+       design:  Viper,
+       rloc:    { ref: "Delta:1", dex: 30e3, dex_var: 5e3 },
+       count:   4,
+       iff:     2,
+       loadout: { ship: -1, name: "ACM Medium Range" },
+       intel:   known,
+    },
+
+    element: {
+       name:    Narom,
+       design:  Razor,
+       rloc:    { ref: "Delta:2", dex: 20e3, dex_var: 5e3 },
+       count:   3,
+       iff:     2,
+       loadout: { ship: -1, name: "ACM Medium Range" },
+       intel:   secret,
+    },
+
+    element: {
+       name:    Nardik,
+       design:  Viper,
+       rloc:    { ref: "Delta:2", dex: 33e3, dex_var: 5e3 },
+       count:   3,
+       iff:     2,
+       loadout: { ship: -1, name: "ACM Medium Range" },
+       intel:   known,
+    },
+}
+
+element: {
+   name:    Orten,
+   design:  Cobra,
+   loc:     (160e3,-210e3, 0),
+   mission: assault,
+
+   count:   4,
+   iff:     2,
+   loadout: { ship: -1, name: "Hvy Ship Strike" },
+
+   objective: { cmd: assault, tgt: Archon },
+
+   navpt:   { cmd: vector,                loc: (160e3,-130e3, 0), speed: 500 },
+   navpt:   { cmd: assault, tgt: Archon,  loc: ( 40e3, -30e3, 0), speed: 500 },
+
+}
+
+event: {
+   id:              1,
+   event:           Message,
+   sound:           "Vox/Misc/M01-E01.ogg",
+   event_message:   "msn.s01.e01",
+   event_source:    Archon,
+   event_ship:      Delta,
+
+   trigger:         Navpoint,
+   trigger_ship:    "Orten 1",
+   trigger_param:   1,
+   delay:           2,
+}
+
+event: {
+   id:              2,
+   event:           Objective,
+   event_message:   "msn.s01.e02",
+   event_source:    Archon,
+   event_ship:      Delta,
+   event_target:    Orten,
+   event_param:     8,
+
+   trigger:         Event,
+   trigger_param:   1,
+   delay:           5,
+}

@@ -1,0 +1,5 @@
+#!/bin/sh -e
+# See GenerateEmulator.cmake
+export WINEPREFIX="@WINE_PREFIX@"
+export WINEPATH="@WINE_PATH@"
+exec /usr/bin/wine "$@"

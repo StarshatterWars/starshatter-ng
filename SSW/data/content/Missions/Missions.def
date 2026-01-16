@@ -1,0 +1,111 @@
+MISSIONLIST
+
+mission: {
+   id:      1,
+   name:    "msn.s01.name",
+   type:    PATROL,
+   desc:    "msn.s01.desc",
+   start:   "00/08:00:00",
+   system:  Ostara,
+   region:  Aram,
+   script:  "01-Alert.def"
+}
+
+mission: {
+   id:      2,
+   name:    "msn.s02.name",
+   type:    ESCORT_STRIKE,
+   desc:    "msn.s02.desc",
+   start:   "01/11:00:00",
+   system:  Loris,
+   region:  Loris,
+   script:  "02-Wings.def"
+}
+
+mission: {
+   id:      3,
+   name:    "msn.s03.name",
+   type:    ESCORT_SHUTTLE,
+   desc:    "msn.s03.desc",
+   start:   "02/18:10:00",
+   system:  Solus,
+   region:  Telmera,
+   script:  "03-Honor.def"
+}
+
+mission: {
+   id:      4,
+   name:    "msn.s04.name",
+   type:    STRIKE,
+   desc:    "msn.s04.desc",
+   start:   "03/09:05:00",
+   system:  Haiche,
+   region:  Haiche,
+   script:  "04-Sand.def"
+}
+
+mission: {
+   id:      5,
+   name:    "msn.s05.name",
+   type:    ASSAULT,
+   desc:    "msn.s05.desc",
+   start:   "04/19:20:00",
+   system:  Renser,
+   region:  Lornas,
+   script:  "05-Execution.def"
+}
+
+mission: {
+   id:      6,
+   name:    "msn.s06.name",
+   type:    STRIKE,
+   desc:    "msn.s06.desc",
+   start:   "05/10:34:00",
+   system:  Radix,
+   region:  "Shadow Canyon",
+   script:  "06-SEAD.def"
+}
+
+mission: {
+   id:      7,
+   name:    "msn.s07.name",
+   type:    ESCORT_FREIGHT,
+   desc:    "msn.s07.desc",
+   start:   "06/16:21:00",
+   system:  Borova,
+   region:  Tulkas,
+   script:  "07-SLGAM.def"
+}
+
+mission: {
+   id:      8,
+   name:    "msn.s08.name",
+   type:    PATROL,
+   desc:    "msn.s08.desc",
+   start:   "07/23:29:00",
+   system:  Solus,
+   region:  Solus,
+   script:  "08-Focus.def"
+}
+
+mission: {
+   id:      9,
+   name:    "msn.s09.name",
+   type:    FLEET,
+   desc:    "msn.s09.desc",
+   start:   "08/09:34:00",
+   system:  Paragon,
+   region:  Paragon,
+   script:  "09-Hounds.def"
+}
+
+mission: {
+   id:      10,
+   name:    "msn.s10.name",
+   type:    FLIGHT_OPS,
+   desc:    "msn.s10.desc",
+   start:   "09/17:15:00",
+   system:  Korius,
+   region:  Korius,
+   script:  "10-Angels.def"
+}

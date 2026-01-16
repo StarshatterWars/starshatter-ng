@@ -1,0 +1,28 @@
+diff '--color=auto' -arNu a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2024-03-03 01:56:30.848795009 +0100
++++ b/CMakeLists.txt	2024-03-03 01:57:13.198796744 +0100
+@@ -63,7 +63,6 @@
+     set(CMAKE_DEBUG_POSTFIX "d")
+     add_definitions(-D_CRT_SECURE_NO_DEPRECATE)
+     add_definitions(-D_CRT_NONSTDC_NO_DEPRECATE)
+-    include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+ endif()
+ 
+ set(ZLIB_PC ${CMAKE_CURRENT_BINARY_DIR}/zlib.pc)
+@@ -71,7 +70,6 @@
+ 		${ZLIB_PC} @ONLY)
+ configure_file(	${CMAKE_CURRENT_SOURCE_DIR}/zconf.h.cmakein
+ 		${CMAKE_CURRENT_BINARY_DIR}/zconf.h @ONLY)
+-include_directories(${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_SOURCE_DIR})
+ 
+ 
+ #============================================================================
+@@ -173,6 +171,8 @@
+ 
+ add_library(zlib SHARED ${ZLIB_SRCS} ${ZLIB_ASMS} ${ZLIB_DLL_SRCS} ${ZLIB_PUBLIC_HDRS} ${ZLIB_PRIVATE_HDRS})
+ add_library(zlibstatic STATIC ${ZLIB_SRCS} ${ZLIB_ASMS} ${ZLIB_PUBLIC_HDRS} ${ZLIB_PRIVATE_HDRS})
++target_include_directories(zlib PUBLIC ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
++target_include_directories(zlibstatic PUBLIC ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
+ set_target_properties(zlib PROPERTIES DEFINE_SYMBOL ZLIB_DLL)
+ set_target_properties(zlib PROPERTIES SOVERSION 1)
+ 

@@ -1,0 +1,224 @@
+MISSION
+
+name:       "msn.s10.name"
+type:       FLIGHT_OPS
+system:     Korius
+region:     Korius
+
+start:      "11/17:15:00"
+degrees:    true
+
+sitrep:     "msn.s10.sitrep"
+
+objective:  "msn.s10.obj"
+
+// ***** GOOD GUYS *****
+
+ship: {
+   name:       Antares
+   design:     Orion
+   loc:        (0, 0, 0)
+   count:      1
+   iff:        1
+   player:     1
+   command_ai: 1
+}
+
+element: {
+   name:    Bearcats,
+   design:  Falcon,
+   count:   24,
+   maint_count: 4,
+   carrier: Antares,
+   iff:     1,
+}
+
+element: {
+   name:    Mustangs,
+   design:  Stormhawk,
+   count:   24,
+   maint_count: 4,
+   carrier: Antares,
+   iff:     1,
+}
+
+element: {
+   name:    Lancers,
+   design:  Thunderbolt,
+   count:   12,
+   maint_count: 2,
+   carrier: Antares,
+   iff:     1,
+}
+
+element: {
+   name:    Taurus,
+   design:  Zodiac,
+   count:   8,
+   maint_count: 2,
+   carrier: Antares,
+   iff:     1,
+}
+
+ship: {
+   name:       Ryan,
+   design:     Asher,
+   rloc:       { ref: Antares, dex: 23e3 },
+   count:      1,
+   iff:        1,
+   command_ai: 0,
+   commander:  Antares,
+}
+
+ship: {
+   name:       Card,
+   design:     Asher,
+   rloc:       { ref: Antares, dex: 25e3 },
+   count:      1,
+   iff:        1,
+   command_ai: 0,
+   commander:  Antares,
+}
+
+// ***** BAD GUYS *****
+
+ship: {
+   name:    Goliath,
+   design:  Goliath,
+   rloc:    { ref: Antares, dex: 250e3, dex_var: 40e3 },
+   count:   1,
+   iff:     2,
+}
+
+element: {
+   name:    Vampires,
+   design:  Viper,
+   count:   16,
+   maint_count: 4,
+   carrier: Goliath,
+   iff:     2,
+}
+
+element: {
+   name:    Zombies,
+   design:  Razor,
+   count:   16,
+   maint_count: 4,
+   carrier: Goliath,
+   iff:     2,
+}
+
+element: {
+   name:    Ghouls,
+   design:  Cobra,
+   count:   16,
+   maint_count: 2,
+   carrier: Goliath,
+   iff:     2,
+}
+
+ship: {
+   name:       Foxbat,
+   design:     Wolf,
+   rloc:       { ref: Goliath, dex: 23e3 },
+   count:      1,
+   iff:        2,
+   command_ai: 1,
+   commander:  Goliath,
+}
+
+ship: {
+   name:       Hunter,
+   design:     Wolf,
+   rloc:       { ref: Goliath, dex: 25e3 },
+   count:      1,
+   iff:        2,
+   command_ai: 1,
+   commander:  Goliath,
+}
+
+ship: {
+   name:       Kyren,
+   design:     Baikal,
+   rloc:       { ref: Goliath, dex: 33e3 },
+   count:      1,
+   iff:        2,
+   command_ai: 1,
+   commander:  Goliath,
+}
+
+
+//
+// EVENT LIST:
+//
+
+event: {
+   id:              25,
+   event:           Message,
+   event_message:   "",
+
+   trigger:         Destroyed,
+   trigger_ship:    Goliath,
+}
+
+event: {
+   id:              26,
+   event:           Message,
+   event_message:   "",
+
+   trigger:         Destroyed,
+   trigger_ship:    Foxbat,
+}
+
+event: {
+   id:              27,
+   event:           Message,
+   event_message:   "",
+
+   trigger:         Destroyed,
+   trigger_ship:    Hunter,
+}
+
+event: {
+   id:              28,
+   event:           Message,
+   event_message:   "",
+
+   trigger:         Destroyed,
+   trigger_ship:    Kyren,
+}
+
+event: {
+   id:              50,
+   event:           Message,
+   sound:           "Vox/Misc/M10-E50.ogg",
+   event_message:   "msn.s10.e01",
+   event_ship:      Antares,
+
+   trigger:         Event,
+   trigger_param:   25,
+   delay:           5,
+}
+
+event: {
+   id:              60,
+   event:           Message,
+   sound:           "Vox/Misc/M10-E60.ogg",
+   event_message:   "msn.s10.e02",
+   event_ship:      Antares,
+
+   trigger:         Jump,
+   trigger_ship:    Goliath,
+   delay:           5,
+}
+
+event: {
+   id:              99,
+   event:           Exit,
+
+   trigger:         "Event (ANY)",
+   trigger_param:   (50, 60),
+   delay:           10,
+}
+
+

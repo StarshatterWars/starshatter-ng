@@ -1,0 +1,15 @@
+project(InfoEx)
+
+add_library(${PROJECT_NAME} STATIC src/description.cpp)
+target_include_directories(${PROJECT_NAME} PUBLIC include/)
+if(WIN32)
+	target_sources(${PROJECT_NAME} PRIVATE src/directx_win32.cpp)
+else()
+	target_sources(${PROJECT_NAME} PRIVATE src/directx_other.cpp)
+endif()
+target_link_libraries(${PROJECT_NAME} PUBLIC FoundationEx PRIVATE iware::infoware)
+
+add_executable(${PROJECT_NAME}_test test/description.cpp test/directx.cpp)
+generate_emulator(${PROJECT_NAME}_test)
+target_link_libraries(${PROJECT_NAME}_test PRIVATE ${PROJECT_NAME} GTest::gtest_main)
+gtest_discover_tests(${PROJECT_NAME}_test DISCOVERY_TIMEOUT 60)

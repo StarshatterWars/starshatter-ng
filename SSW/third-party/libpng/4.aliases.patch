@@ -1,0 +1,19 @@
+diff '--color=auto' -arNu a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2024-03-03 12:45:31.540235890 +0100
++++ b/CMakeLists.txt	2024-03-03 12:46:11.986903772 +0100
+@@ -185,6 +185,7 @@
+   endif()
+   target_include_directories(${PNG_LIB_NAME} PUBLIC ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
+   target_link_libraries(${PNG_LIB_NAME} Zlib::zlib ${M_LIBRARY})
++  add_library(Png::png ALIAS ${PNG_LIB_NAME})
+ endif()
+ 
+ if(PNG_STATIC)
+@@ -197,6 +198,7 @@
+   endif()
+   target_include_directories(${PNG_LIB_NAME_STATIC} PUBLIC ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
+   target_link_libraries(${PNG_LIB_NAME_STATIC} Zlib::zlibstatic ${M_LIBRARY})
++  add_library(Png::pngstatic ALIAS ${PNG_LIB_NAME_STATIC})
+ endif()
+ 
+ 

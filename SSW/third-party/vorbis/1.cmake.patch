@@ -1,0 +1,176 @@
+diff '--color=auto' -arNu a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	1970-01-01 01:00:00.000000000 +0100
++++ b/CMakeLists.txt	2024-03-03 12:44:24.470233876 +0100
+@@ -0,0 +1,59 @@
++cmake_minimum_required(VERSION 2.8.7)
++project(vorbis)
++
++# Required modules
++include(GNUInstallDirs)
++include(CheckIncludeFiles)
++
++# Build options
++option(BUILD_SHARED_LIBS "Build shared library" OFF)
++if(APPLE)
++    option(BUILD_FRAMEWORK "Build Framework bundle for OSX" OFF)
++endif()
++
++if(BUILD_FRAMEWORK)
++	set(BUILD_SHARED_LIBS TRUE)
++endif()
++
++# Extract project version from configure.ac
++file(READ configure.ac CONFIGURE_AC_CONTENTS)
++string(REGEX MATCH "AC_INIT\\(\\[libvorbis\\],\\[([0-9]*).([0-9]*).([0-9]*)" DUMMY ${CONFIGURE_AC_CONTENTS})
++set(PROJECT_VERSION_MAJOR ${CMAKE_MATCH_1})
++set(PROJECT_VERSION_MINOR ${CMAKE_MATCH_2})
++set(PROJECT_VERSION_PATCH ${CMAKE_MATCH_3})
++set(PROJECT_VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH})
++
++# Helper function to get version-info
++function(get_version_info result current_var_name age_var_name revision_var_name)
++    string(REGEX MATCH "${current_var_name}=([0-9]*)" DUMMY ${CONFIGURE_AC_CONTENTS})
++    set(VERSION_INFO_CURRENT ${CMAKE_MATCH_1})
++
++    string(REGEX MATCH "${age_var_name}=([0-9]*)" DUMMY ${CONFIGURE_AC_CONTENTS})
++    set(VERSION_INFO_AGE ${CMAKE_MATCH_1})
++
++    string(REGEX MATCH "${revision_var_name}=([0-9]*)" DUMMY ${CONFIGURE_AC_CONTENTS})
++    set(VERSION_INFO_REVISION ${CMAKE_MATCH_1})
++
++    math(EXPR VERSION_INFO_CURRENT_MINUS_AGE "${VERSION_INFO_CURRENT} - ${VERSION_INFO_AGE}")
++
++    set(${result} "${VERSION_INFO_CURRENT_MINUS_AGE}.${VERSION_INFO_AGE}.${VERSION_INFO_REVISION}" PARENT_SCOPE)
++endfunction()
++
++# Helper function to configure pkg-config files
++function(configure_pkg_config_file pkg_config_file_in)
++    set(prefix ${CMAKE_INSTALL_PREFIX})
++    set(exec_prefix ${CMAKE_INSTALL_FULL_BINDIR})
++    set(libdir ${CMAKE_INSTALL_FULL_LIBDIR})
++    set(includedir ${CMAKE_INSTALL_FULL_INCLUDEDIR})
++    set(VERSION ${PROJECT_VERSION})
++    string(REPLACE ".in" "" pkg_config_file ${pkg_config_file_in})
++    configure_file(${pkg_config_file_in} ${pkg_config_file} @ONLY)
++endfunction()
++
++message(STATUS "Configuring ${PROJECT_NAME} ${PROJECT_VERSION}")
++
++add_subdirectory(lib)
++
++configure_pkg_config_file(vorbis.pc.in)
++configure_pkg_config_file(vorbisenc.pc.in)
++configure_pkg_config_file(vorbisfile.pc.in)
+diff '--color=auto' -arNu a/lib/CMakeLists.txt b/lib/CMakeLists.txt
+--- a/lib/CMakeLists.txt	1970-01-01 01:00:00.000000000 +0100
++++ b/lib/CMakeLists.txt	2024-03-03 12:44:45.650234517 +0100
+@@ -0,0 +1,109 @@
++set(VORBIS_PUBLIC_HEADERS
++    ../include/vorbis/codec.h
++    ../include/vorbis/vorbisenc.h
++    ../include/vorbis/vorbisfile.h
++)
++
++set(VORBIS_HEADERS
++    envelope.h
++    lpc.h
++    lsp.h
++    codebook.h
++    misc.h
++    psy.h
++    masking.h
++    os.h
++    mdct.h
++    smallft.h
++    highlevel.h
++    registry.h
++    scales.h
++    window.h
++    lookup.h
++    lookup_data.h
++    codec_internal.h
++    backends.h
++    bitrate.h
++)
++
++set(VORBIS_SOURCES
++    mdct.c
++    smallft.c
++    block.c
++    envelope.c
++    window.c
++    lsp.c
++    lpc.c
++    analysis.c
++    synthesis.c
++    psy.c
++    info.c
++    floor1.c
++    floor0.c
++    res0.c
++    mapping0.c
++    registry.c
++    codebook.c
++    sharedbook.c
++    lookup.c
++    bitrate.c
++)
++
++set(VORBISFILE_SOURCES
++    vorbisfile.c
++)
++
++set(VORBISENC_SOURCES
++    vorbisenc.c
++)
++
++if(WIN32)
++    list(APPEND VORBIS_SOURCES vorbisenc.c)
++endif()
++
++if(MSVC)
++    list(APPEND VORBIS_SOURCES ../win32/vorbis.def)
++    list(APPEND VORBISENC_SOURCES ../win32/vorbisenc.def)
++    list(APPEND VORBISFILE_SOURCES ../win32/vorbisfile.def)
++endif()
++
++include_directories(../include)
++include_directories(.)
++
++if (NOT BUILD_FRAMEWORK)
++    add_library(vorbis ${VORBIS_HEADERS} ${VORBIS_SOURCES})
++    add_library(vorbisenc ${VORBISENC_SOURCES})
++    add_library(vorbisfile ${VORBISFILE_SOURCES})
++
++    get_version_info(VORBIS_VERSION_INFO "V_LIB_CURRENT" "V_LIB_AGE" "V_LIB_REVISION")
++    set_target_properties(vorbis PROPERTIES SOVERSION ${VORBIS_VERSION_INFO})
++    get_version_info(VORBISENC_VERSION_INFO "VE_LIB_CURRENT" "VE_LIB_AGE" "VE_LIB_REVISION")
++    set_target_properties(vorbisenc PROPERTIES SOVERSION ${VORBISENC_VERSION_INFO})
++    get_version_info(VORBISFILE_VERSION_INFO "VF_LIB_CURRENT" "VF_LIB_AGE" "VF_LIB_REVISION")
++    set_target_properties(vorbisfile PROPERTIES SOVERSION ${VORBISFILE_VERSION_INFO})
++
++    target_include_directories(vorbis PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../include)
++    target_include_directories(vorbisenc PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../include)
++    target_include_directories(vorbisfile PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../include)
++
++    target_link_libraries(vorbis Ogg::ogg)
++    target_link_libraries(vorbisenc Ogg::ogg vorbis)
++    target_link_libraries(vorbisfile Ogg::ogg vorbis)
++
++    add_library(Vorbis::vorbis ALIAS vorbis)
++    add_library(Vorbis::vorbisenc ALIAS vorbisenc)
++    add_library(Vorbis::vorbisfile ALIAS vorbisfile)
++else()
++    add_library(vorbis ${VORBIS_PUBLIC_HEADERS} ${VORBIS_HEADERS} ${VORBIS_SOURCES} ${VORBISFILE_SOURCES} ${VORBISENC_SOURCES})
++    set_target_properties(vorbis PROPERTIES
++        FRAMEWORK TRUE
++        FRAMEWORK_VERSION ${PROJECT_VERSION}
++        MACOSX_FRAMEWORK_IDENTIFIER org.xiph.vorbis
++        MACOSX_FRAMEWORK_SHORT_VERSION_STRING ${PROJECT_VERSION}
++        MACOSX_FRAMEWORK_BUNDLE_VERSION ${PROJECT_VERSION}
++        XCODE_ATTRIBUTE_INSTALL_PATH "@rpath"
++        PUBLIC_HEADER "${VORBIS_PUBLIC_HEADERS}"
++        OUTPUT_NAME Vorbis
++    )
++    target_link_libraries(vorbis ${OGG_LIBRARIES})
++endif()

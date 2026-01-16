@@ -1,0 +1,386 @@
+AWARDS
+
+//
+// *** R A N K   T A B L E ***
+//
+
+award: {
+   type:          rank,
+   id:            0,
+   name:          "award.rank.0.name",
+   abrv:          "award.rank.0.abrv",
+   desc:          "award.rank.0.desc",
+   award:         "award.rank.0.grant",
+   award_sound:   "Awards/Rank0.wav"
+   small:         Rank00,
+   large:         Rank01,
+   grant:         0x7,
+   total_points:  0,
+}
+
+award: {
+   type:          rank,
+   id:            1,
+   name:          "award.rank.1.name",
+   abrv:          "award.rank.1.abrv",
+   desc:          "award.rank.1.desc",
+   award:         "award.rank.1.grant",
+   award_sound:   "Awards/Rank1.wav"
+   small:         Rank10,
+   large:         Rank11,
+   grant:         0x7,
+   total_points:  500,
+}
+
+award: {
+   type:          rank,
+   id:            2,
+   name:          "award.rank.2.name",
+   abrv:          "award.rank.2.abrv",
+   desc:          "award.rank.2.desc",
+   award:         "award.rank.2.grant",
+   award_sound:   "Awards/Rank2.wav"
+   small:         Rank20,
+   large:         Rank21,
+   grant:         0x7,
+   total_points:  2000,
+}
+
+award: {
+   type:          rank,
+   id:            3,
+   name:          "award.rank.3.name",
+   abrv:          "award.rank.3.abrv",
+   desc:          "award.rank.3.desc",
+   award:         "award.rank.3.grant",
+   award_sound:   "Awards/Rank3.wav"
+   small:         Rank30,
+   large:         Rank31,
+   grant:         0x03ff,
+   total_points:  5000,
+}
+
+award: {
+   type:          rank,
+   id:            4,
+   name:          "award.rank.4.name",
+   abrv:          "award.rank.4.abrv",
+   desc:          "award.rank.4.desc",
+   award:         "award.rank.4.grant",
+   award_sound:   "Awards/Rank4.wav"
+   small:         Rank40,
+   large:         Rank41,
+   grant:         0x03ff,
+   total_points:  10e3,
+}
+
+award: {
+   type:          rank,
+   id:            5,
+   name:          "award.rank.5.name",
+   abrv:          "award.rank.5.abrv",
+   desc:          "award.rank.5.desc",
+   award:         "award.rank.5.grant",
+   award_sound:   "Awards/Rank5.wav"
+   small:         Rank50,
+   large:         Rank51,
+   grant:         0x0fff,
+   total_points:  20e3,
+}
+
+award: {
+   type:          rank,
+   id:            6,
+   name:          "award.rank.6.name",
+   abrv:          "award.rank.6.abrv",
+   desc:          "award.rank.6.desc",
+   award:         "award.rank.6.grant",
+   award_sound:   "Awards/Rank6.wav"
+   small:         Rank60,
+   large:         Rank61,
+   grant:         0xffff,
+   total_points:  40e3,
+}
+
+award: {
+   type:          rank,
+   id:            7,
+   name:          "award.rank.7.name",
+   abrv:          "award.rank.7.abrv",
+   desc:          "award.rank.7.desc",
+   award:         "award.rank.7.grant",
+   award_sound:   "Awards/Rank7.wav"
+   small:         Rank70,
+   large:         Rank71,
+   grant:         0xffff,
+   total_points:  100e3,
+}
+
+award: {
+   type:          rank,
+   id:            8,
+   name:          "award.rank.8.name",
+   abrv:          "award.rank.8.abrv",
+   desc:          "award.rank.8.desc",
+   award:         "award.rank.8.grant",
+   award_sound:   "Awards/Rank8.wav"
+   small:         Rank80,
+   large:         Rank81,
+   grant:         0xffff,
+   total_points:  150e3,
+}
+
+award: {
+   type:          rank,
+   id:            9,
+   name:          "award.rank.9.name",
+   abrv:          "award.rank.9.abrv",
+   desc:          "award.rank.9.desc",
+   award:         "award.rank.9.grant",
+   award_sound:   "Awards/Rank9.wav"
+   small:         Rank90,
+   large:         Rank91,
+   grant:         0xffff,
+   total_points:  200e3,
+}
+
+award: {
+   type:          rank,
+   id:            10,
+   name:          "award.rank.10.name",
+   abrv:          "award.rank.10.abrv",
+   desc:          "award.rank.10.desc",
+   award:         "award.rank.10.grant",
+   award_sound:   "Awards/RankA.wav"
+   small:         RankA0,
+   large:         RankA1,
+   grant:         0xffff,
+   total_points:  250e3,
+}
+
+//
+// *** M E D A L   T A B L E ***
+//
+
+award: {
+   type:          medal,
+   id:            0x0001,
+   name:          "award.medal.0001.name",
+   desc:          "award.medal.0001.desc",
+   award:         "award.medal.0001.grant",
+   small:         Ribbon05,
+   large:         Medal05,
+
+   campaign_id:         5,
+   campaign_complete:   true,
+   dynamic_campaign:    true,
+   ceremony:            false,
+}
+
+award: {
+   type:          medal,
+   id:            0x0002,
+   name:          "award.medal.0002.name",
+   desc:          "award.medal.0002.desc",
+   award:         "award.medal.0002.grant",
+   small:         Ribbon04,
+   large:         Medal04,
+
+   campaign_id:         4,
+   campaign_complete:   true,
+   dynamic_campaign:    true,
+   ceremony:            false,
+}
+
+award: {
+   type:          medal,
+   id:            0x0004,
+   name:          "award.medal.0004.name",
+   desc:          "award.medal.0004.desc",
+   award:         "award.medal.0004.grant",
+   small:         Ribbon03,
+   large:         Medal03,
+
+   campaign_id:         3,
+   campaign_complete:   true,
+   dynamic_campaign:    true,
+   ceremony:            false,
+}
+
+award: {
+   type:          medal,
+   id:            0x0010,
+   name:          "award.medal.0010.name",
+   desc:          "award.medal.0010.desc",
+   award:         "award.medal.0010.grant",
+   small:         Ribbon01,
+   large:         Medal01,
+
+   campaign_id:         2,
+   campaign_complete:   true,
+   dynamic_campaign:    true,
+   ceremony:            false,
+}
+
+award: {
+   type:          medal,
+   id:            0x0020,
+   name:          "award.medal.0020.name",
+   desc:          "award.medal.0020.desc",
+   award:         "award.medal.0020.grant",
+   small:         Ribbon06,
+   large:         Medal06,
+   lost:          1,
+   min_rank:      1,
+   max_rank:      6,
+   lottery:       2,
+}
+
+award: {
+   type:          medal,
+   id:            0x0040,
+   name:          "award.medal.0040.name",
+   desc:          "award.medal.0040.desc",
+   award:         "award.medal.0040.grant",
+   small:         Ribbon07,
+   large:         Medal07,
+   lost:          -1,
+   kills:         3,
+   min_rank:      1,
+   max_rank:      6,
+   max_ship_class: attack,
+   lottery:       10,
+   total_missions:   15,
+}
+
+award: {
+   type:          medal,
+   id:            0x0080,
+   name:          "award.medal.0080.name",
+   desc:          "award.medal.0080.desc",
+   award:         "award.medal.0080.grant",
+   small:         Ribbon08,
+   large:         Medal08,
+   lost:          -1,
+   kills:         3,
+   min_rank:      3,
+   max_rank:      6,
+   min_ship_class: corvette,
+   lottery:       10,
+}
+
+award: {
+   type:          medal,
+   id:            0x0100,
+   name:          "award.medal.0100.name",
+   desc:          "award.medal.0100.desc",
+   award:         "award.medal.0100.grant",
+   small:         Ribbon09,
+   large:         Medal09,
+
+   kills:            1,
+   min_rank:         3,
+   lottery:          20,
+   total_missions:   100,
+   dynamic_campaign: true
+}
+
+award: {
+   type:          medal,
+   id:            0x0200,
+   name:          "award.medal.0200.name",
+   desc:          "award.medal.0200.desc",
+   award:         "award.medal.0200.grant",
+   small:         Ribbon0A,
+   large:         Medal0A,
+
+   lost:             -1,
+   kills:            3,
+   min_rank:         4,
+   max_rank:         7,
+   lottery:          20,
+   dynamic_campaign: true
+}
+
+award: {
+   type:          medal,
+   id:            0x0400,
+   name:          "award.medal.0400.name",
+   desc:          "award.medal.0400.desc",
+   award:         "award.medal.0400.grant",
+   small:         Ribbon0B,
+   large:         Medal0B,
+
+   lost:             1,
+   kills:            5,
+   required_awards:  0x0020,
+   lottery:          2,
+   dynamic_campaign: true
+}
+
+award: {
+   type:          medal,
+   id:            0x0800,
+   name:          "award.medal.0800.name",
+   desc:          "award.medal.0800.desc",
+   award:         "award.medal.0800.grant",
+   small:         Ribbon0C,
+   large:         Medal0C,
+
+   lost:             -1,
+   kills:            2,
+   min_ship_class:   destroyer,
+   required_awards:  0x0080,
+   lottery:          20,
+   total_missions:   50,
+   dynamic_campaign: true
+}
+
+award: {
+   type:          medal,
+   id:            0x1000,
+   name:          "award.medal.1000.name",
+   desc:          "award.medal.1000.desc",
+   award:         "award.medal.1000.grant",
+   small:         Ribbon0D,
+   large:         Medal0D,
+
+   kills:            8,
+   required_awards:  0x0400,
+   lottery:          3,
+   total_missions:   100,
+   dynamic_campaign: true
+}
+
+award: {
+   type:          medal,
+   id:            0x2000,
+   name:          "award.medal.2000.name",
+   desc:          "award.medal.2000.desc",
+   award:         "award.medal.2000.grant",
+   small:         Ribbon0E,
+   large:         Medal0E,
+
+   kills:            8,
+   required_awards:  0x0400,
+   lottery:          3,
+   total_missions:   150,
+   dynamic_campaign: true
+}
+
+award: {
+   type:          medal,
+   id:            0x4000,
+   name:          "award.medal.4000.name",
+   desc:          "award.medal.4000.desc",
+   award:         "award.medal.4000.grant",
+   small:         Ribbon0F,
+   large:         Medal0F,
+
+   kills:            10,
+   required_awards:  0x3400,
+   total_missions:   200,
+   dynamic_campaign: true
+}
+
+
