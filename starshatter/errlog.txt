@@ -1,0 +1,176 @@
++====================================================================+
+| STARSHATTER 5.1.87-438-gfe5684ec          16 Jan 2026,  3:13:11 PM |
++====================================================================+
+
+OS: Microsoft Windows 11 Education
+Physical memory: 68.14 GB
+CPU: Intel(R) Core(TM) Ultra 9 275HX
+CPU frequency: 3.07 GHz
+
+  Initializing Game
+
+  Initializing instance...
+  Window created.
+  Instance initialized.
+  Initializing content...
+  Initializing game...
+  Palette laoded
+  Init Video...
+  Request 1280 x 720 x 0 mode
+
+********************************
+*   Direct 3D version 9        *
+********************************
+
+   Creating Video Device for HWND = 000e0842
+ERROR - Failed to compile 'magic.fx'
+C:\Users\cbott\Downloads\starshatter-open\starshatter\memory(203,27): warning X3571: pow(f, e) will not work for negative f, use abs(f) or conditionally handle negative values if you expect them
+C:\Users\cbott\Downloads\starshatter-open\starshatter\memory(203,27): warning X3571: pow(f, e) will not work for negative f, use abs(f) or conditionally handle negative values if you expect them
+
+
+   SoundCardD3D Primary Buffer Format:
+     bits: 16
+     chls: 2
+     rate: 44100
+
+  Created video object.
+  Created screen object.
+Established requested video parameters.
+
+Loading Ranks and Medals
+  Loaded key.cfg
+
+
+Starshatter::InitGame() create joystick
+   DirectInput7: Failed to initialize DI7. [The specified interface is not supported by the object. This value is equal to the E_NOINTERFACE standard COM return value.]
+Joystick: no DI7, unable to enumerate devices
+
+*** NaturalPoint Game Client Initialization ***
+NPClient - Unable to initialize interface: NaturalPoint DLL not found
+Loading System Designs 'sys.def'
+Loading Weapon Designs 'wep.def'
+Loading ship design catalog: Ships/catalog.def
+FS::ListFiles: filesystem error: recursive directory iterator cannot open directory: No such file or directory [.\Mods/Skins/]
+
+Loading Galaxy: Galaxy.def
+Loading StarSystem: Jarnell/Jarnell.def
+Loading StarSystem: Borova/Borova.def
+Loading StarSystem: Athenar/Athenar.def
+Loading StarSystem: Paragon/Paragon.def
+Loading StarSystem: Thralis/Thralis.def
+Loading StarSystem: Janus/Janus.def
+Loading StarSystem: Solus/Solus.def
+Loading StarSystem: Silessia/Silessia.def
+Loading StarSystem: Haiche/Haiche.def
+Loading StarSystem: Renser/Renser.def
+Loading StarSystem: Loris/Loris.def
+Loading StarSystem: Ostara/Ostara.def
+Loading StarSystem: Kolchev/Kolchev.def
+Loading StarSystem: Korius/Korius.def
+Loading StarSystem: Tarsus/Tarsus.def
+Loading StarSystem: Nephrys/Nephrys.def
+Loading StarSystem: Radix/Radix.def
+Loading StarSystem: Isham/Isham.def
+Loading StarSystem: Garrison/Garrison.def
+Loading StarSystem: Trocanther/Trocanther.def
+Loading StarSystem: Marak/Marak.def
+Loading StarSystem: Black/Black.def
+Loading StarSystem: Museum/Museum.def
+Order of Battle Loaded (Terellian Alliance).
+Order of Battle Loaded (Dantari Separatists).
+Order of Battle Loaded (Haiche Protectorate).
+Order of Battle Loaded (Marakan Hegemony).
+Order of Battle Loaded (Brotherhood of Iron).
+Order of Battle Loaded (Silessian Confederacy).
+Order of Battle Loaded (Independent System of Solus).
+Order of Battle Loaded (Zolon Empire).
+FS::ListFiles: filesystem error: directory iterator cannot open directory: No such file or directory [.\Multiplayer/]
+FS::ListFiles: filesystem error: directory iterator cannot open directory: No such file or directory [.\Mods/Missions/]
+Loading Form 'MenuDlg'
+Loading Form 'ExitDlg'
+Loading Form 'AudDlg'
+Loading Form 'CtlDlg'
+Loading Form 'OptDlg'
+Loading Form 'VidDlg'
+Loading Form 'ModDlg'
+Loading Form 'TacRefDlg'
+Loading Form 'CmpSelectDlg'
+Loading Form 'NetLobbyDlg'
+Loading Form 'NetClientDlg'
+Loading Form 'NetServerDlg'
+Loading Form 'NetUnitDlg'
+Loading Form 'NetAddrDlg'
+Loading Form 'NetPassDlg'
+Loading Form 'MsnEditDlg'
+Loading Form 'MsnEditNavDlg'
+Loading Form 'MsnElemDlg'
+Loading Form 'MsnEventDlg'
+Loading Form 'MsnSelectDlg'
+Loading Form 'PlayerDlg'
+Loading Form 'AwardDlg'
+Loading Form 'JoyDlg'
+Loading Form 'KeyDlg'
+Loading Form 'FirstTimeDlg'
+Loading Form 'ModInfoDlg'
+Loading Form 'ConfirmDlg'
+Loading Form 'LoadDlg'
+MusicDirector::SetMode() old: NONE  new: INTRO
+
+Opened Ogg Bitstream 'Music/Intro\SS_TGS_Main-Theme.ogg'
+Sony Ogg Vorbis 1.0 Final
+Bitstream is 2 channel, 44100Hz
+Decoded length: 6210849 samples
+Encoded by: Xiph.Org libVorbis I 20020717
+
+MusicDirector::SetMode() old: INTRO  new: MENU
+
+Opened Ogg Bitstream 'Music/Menu\SS_TGS_Temp_Menu-Loop.ogg'
+Sony Ogg Vorbis 1.0 Final
+Bitstream is 2 channel, 44100Hz
+Decoded length: 4762729 samples
+Encoded by: Xiph.Org libVorbis I 20020717
+
+Exit Confirmed.
+MusicDirector::SetMode() old: MENU  new: NONE
+>>> Starshatter::SetGameMode(7) (EXIT_MODE)
+  Shutting Down (Returning to Windows)...
+  Stardate: 500000032.0
+  Bitmap Cache Footprint: 50489 KB
+
+
+*** Game::Exit()
+
++====================================================================+
+  Begin Shutdown...
+MusicDirector::SetMode() old: NONE  new: SHUTDOWN
+Campaign::Close() - destroying all campaigns
+  Destroying Galaxy Galaxy
+   Destroying Star System Jarnell
+   Destroying Star System Borova
+   Destroying Star System Athenar
+   Destroying Star System Paragon
+   Destroying Star System Thralis
+   Destroying Star System Janus
+   Destroying Star System Solus
+   Destroying Star System Silessia
+   Destroying Star System Haiche
+   Destroying Star System Renser
+   Destroying Star System Loris
+   Destroying Star System Ostara
+   Destroying Star System Kolchev
+   Destroying Star System Korius
+   Destroying Star System Tarsus
+   Destroying Star System Nephrys
+   Destroying Star System Radix
+   Destroying Star System Isham
+   Destroying Star System Garrison
+   Destroying Star System Trocanther
+   Destroying Star System Marak
+   Destroying Star System Black
+   Destroying Star System Museum
+UNDEPLOYING MODS
+TexCacheDX9: final used count = 15
+   VideoDX9: shutdown
+   SoundCardD3D: shutdown
++====================================================================+
+ END OF LINE.
